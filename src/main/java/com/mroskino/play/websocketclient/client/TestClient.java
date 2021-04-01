@@ -2,6 +2,7 @@ package com.mroskino.play.websocketclient.client;
 
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.socket.WebSocketMessage;
@@ -12,6 +13,7 @@ import javax.annotation.PostConstruct;
 import java.net.URI;
 
 @Component
+@Slf4j
 @RequiredArgsConstructor
 public class TestClient {
 
@@ -25,14 +27,13 @@ public class TestClient {
     @SneakyThrows
     private void initialize() {
         url = new URI(address);
+        handle();
     }
 
-    public Mono<Void> handle() {
-        return client.execute(url, session ->
-                session.send(Mono.just(session.textMessage("Testovaci zprava")))
-                        .thenMany(session.receive()
-                                .map(WebSocketMessage::getPayloadAsText)
-                                .log())
-                        .then());
+    public void handle() {
+        client.execute()
+
+        )
+
     }
 }

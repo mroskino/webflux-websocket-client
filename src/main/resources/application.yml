@@ -1,2 +1,5 @@
+server:
+  port: 8091
+
 url:
-  websocket: wss://echo.websocket.org
+  websocket: ws://localhost:8090/test
