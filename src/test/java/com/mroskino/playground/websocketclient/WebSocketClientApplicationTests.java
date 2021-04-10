@@ -1,10 +1,10 @@
-package com.mroskino.play.websocketclient;
+package com.mroskino.playground.websocketclient;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class WebsocketClientApplicationTests {
+class WebSocketClientApplicationTests {
 
     @Test
     void contextLoads() {

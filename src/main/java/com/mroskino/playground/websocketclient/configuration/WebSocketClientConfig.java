@@ -1,4 +1,4 @@
-package com.mroskino.play.websocketclient.config;
+package com.mroskino.playground.websocketclient.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,7 +8,7 @@ import org.springframework.web.reactive.socket.client.WebSocketClient;
 
 @Configuration
 @EnableWebFlux
-public class WebsocketClientConfig {
+public class WebSocketClientConfig {
 
     @Bean
     public WebSocketClient webSocketClient() {

@@ -2,4 +2,4 @@ server:
   port: 8091
 
 url:
-  websocket: ws://localhost:8090/test
+  websocket-server: ws://localhost:8090/test

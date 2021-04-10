@@ -1,13 +1,13 @@
-package com.mroskino.play.websocketclient;
+package com.mroskino.playground.websocketclient;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WebsocketClientApplication {
+public class WebSocketClientApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(WebsocketClientApplication.class, args);
+        SpringApplication.run(WebSocketClientApplication.class, args);
     }
 
 }
