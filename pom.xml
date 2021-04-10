@@ -8,10 +8,10 @@
         <version>2.4.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.mroskino.play</groupId>
-    <artifactId>websocket-client</artifactId>
+    <groupId>com.mroskino.playground</groupId>
+    <artifactId>webflux-websocket-client</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>websocket-client</name>
+    <name>webflux-websocket-client</name>
     <description>Client for websocket</description>
     <properties>
         <java.version>11</java.version>
