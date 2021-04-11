@@ -42,7 +42,7 @@ public class TestWebSocketClient {
     }
 
     public Mono<Void> sendMessage(String message) {
-        if (!session.isOpen()) {
+        if (session == null || !session.isOpen()) {
             return Mono.error(new RuntimeException("No connection to server"));
         }
 
