@@ -7,12 +7,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.socket.WebSocketSession;
 import org.springframework.web.reactive.socket.client.WebSocketClient;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import javax.annotation.PostConstruct;
 import java.net.URI;
-import java.time.Duration;
 
 @Slf4j
 @Component
@@ -32,9 +30,9 @@ public class TestWebSocketClient {
         client.execute(new URI(address), this::handle)
                 .subscribe();
 
-        Flux.interval(Duration.ofMillis(1000))
-                .thenMany(s -> sendMessage("ping"))
-                .subscribe();
+//        Flux.interval(Duration.ofMillis(1000))
+//                .thenMany(s -> sendMessage("ping"))
+//                .subscribe();
     }
 
     public Mono<Void> sendMessage(String message) {
