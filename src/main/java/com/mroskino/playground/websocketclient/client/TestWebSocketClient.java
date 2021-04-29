@@ -30,9 +30,9 @@ public class TestWebSocketClient {
         client.execute(new URI(address), this::handle)
                 .subscribe();
 
-//        Flux.interval(Duration.ofMillis(1000))
-//                .thenMany(s -> sendMessage("ping"))
-//                .subscribe();
+        Flux.interval(Duration.ofMillis(1000))
+                .thenMany(s -> sendMessage("ping"))
+                .subscribe();
     }
 
     public Mono<Void> sendMessage(String message) {
