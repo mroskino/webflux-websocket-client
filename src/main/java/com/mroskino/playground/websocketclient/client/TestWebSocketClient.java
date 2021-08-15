@@ -51,14 +51,15 @@ public class TestWebSocketClient {
                 .then();
     }
 
+    @SneakyThrows
     @Scheduled(fixedRateString = "${client.test-websocket-client.ping-delay}")
-    public void ping() {
+    private void ping() {
         if (session == null || !session.isOpen()) {
-            log.warn("No connection to server");
+            log.error("No connection to server. Reconnecting.");
+            client.execute(new URI(address), this::handle)
+                    .subscribe();
             return;
         }
-
-        log.info("Sending ping");
 
         session.send(Mono.just(session.textMessage("ping")))
                 .doOnSuccess(v -> log.info("WebSocket session {} sent ping message", session.getId()))

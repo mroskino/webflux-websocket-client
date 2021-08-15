@@ -6,4 +6,4 @@ url:
 
 client:
   test-websocket-client:
-    ping-delay: 2000
+    ping-delay: 3000
