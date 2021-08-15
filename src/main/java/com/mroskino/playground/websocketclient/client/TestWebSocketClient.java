@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.socket.WebSocketSession;
 import org.springframework.web.reactive.socket.client.WebSocketClient;
@@ -29,10 +30,6 @@ public class TestWebSocketClient {
     private void initialize() {
         client.execute(new URI(address), this::handle)
                 .subscribe();
-
-//        Flux.interval(Duration.ofMillis(1000))
-//                .thenMany(s -> sendMessage("ping"))
-//                .subscribe();
     }
 
     public Mono<Void> sendMessage(String message) {
@@ -49,9 +46,22 @@ public class TestWebSocketClient {
         log.info("WebSocket session {} opened", session.getId());
 
         return session.receive()
-                .doOnNext(m -> log.info("WebSocket session {} received message: {}", session.getId(),  m.getPayloadAsText()))
+                .doOnNext(m -> log.info("WebSocket session {} received message: {}", session.getId(), m.getPayloadAsText()))
                 .doOnTerminate(() -> log.info("WebSocket session {} closed", session.getId()))
                 .then();
     }
 
+    @Scheduled(fixedRate = 2000)
+    public void ping() {
+        if (session == null || !session.isOpen()) {
+            log.warn("No connection to server");
+            return;
+        }
+
+        log.info("Sending ping");
+
+        session.send(Mono.just(session.textMessage("ping")))
+                .doOnSuccess(v -> log.info("WebSocket session {} sent ping message", session.getId()))
+                .subscribe();
+    }
 }
