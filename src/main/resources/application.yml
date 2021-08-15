@@ -3,3 +3,7 @@ server:
 
 url:
   websocket-server: ws://localhost:8090/test
+
+client:
+  test-websocket-client:
+    ping-delay: 2000

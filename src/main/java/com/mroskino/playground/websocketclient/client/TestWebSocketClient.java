@@ -51,7 +51,7 @@ public class TestWebSocketClient {
                 .then();
     }
 
-    @Scheduled(fixedRate = 2000)
+    @Scheduled(fixedRateString = "${client.test-websocket-client.ping-delay}")
     public void ping() {
         if (session == null || !session.isOpen()) {
             log.warn("No connection to server");
